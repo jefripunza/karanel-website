@@ -1,4 +1,4 @@
-# SB Admin 2 (React Version)
+# Karanel Website (React)
 > React version SB Admin 2
 
 **Under Construction** <br/>
@@ -7,13 +7,13 @@ A React version of admin template [SB Admin 2](https://startbootstrap.com/themes
 ## Getting Start
 
 ```bash
-git clone https://github.com/luizhfraraujo/sb-admin-2-react.git
-cd sb-admin-2-react
+git clone https://github.com/jefripunza/karanel-website.git
+cd karanel-website
 yarn install
 yarn start
 ```
 
-If you want another name of your project, clone the repo with the name. Ex: `git clone https://github.com/luizhfraraujo/sb-admin-2-react.git myawesomeproject`
+If you want another name of your project, clone the repo with the name. Ex: `git clone https://github.com/jefripunza/karanel-website.git my-project-name`
 
 ## Components
 
@@ -44,14 +44,14 @@ This theme was created by Blackrock Digital to Start Bootstrap
 ## Authors
 Peoples who working on react version
 
-* **Luiz Araújo** - [Github][luizhfraraujo-github]
+* **Luiz Araújo** - [Github][jefripunza-github]
 
 ## License
 [MIT](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/gh-pages/LICENSE)
 
 <!-- Markdown link & img -->
 [blackrock-github]: https://github.com/BlackrockDigital
-[luizhfraraujo-github]: https://github.com/luizhfraraujo
+[jefripunza-github]: https://github.com/jefripunza
 
 [charts-custom]: https://blog.bitsrc.io/customizing-chart-js-in-react-2199fa81530a
 [react-redux]:https://medium.com/reactbrasil/iniciando-com-redux-c14ca7b7dcf

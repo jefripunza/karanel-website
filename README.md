@@ -44,7 +44,7 @@ This theme was created by Blackrock Digital to Start Bootstrap
 ## Authors
 Peoples who working on react version
 
-* **Luiz Araújo** - [Github][jefripunza-github]
+* **Jefri Herdi Triyanto** - [Github][jefripunza-github]
 
 ## License
 [MIT](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/gh-pages/LICENSE)

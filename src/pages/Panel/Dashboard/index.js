@@ -10,6 +10,7 @@ import ChartLine from '../../../components/Charts/Line';
 import PageHeading from '../../../components/PageHeading';
 
 import Footer from '../../../components/Footer';
+import { config } from '../../../config';
 
 class Dashboard extends Component {
     componentWillMount() {
@@ -23,7 +24,7 @@ class Dashboard extends Component {
                 {/* <!-- Page Wrapper --> */}
                 <div id="wrapper">
                     {/* <!-- Sidebar --> */}
-                    <Sidebar />
+                    <Sidebar now={config.routes_frontend.panel.dashboard} />
                     {/* <!-- End of Sidebar --> */}
 
                     {/* <!-- Content Wrapper --> */}

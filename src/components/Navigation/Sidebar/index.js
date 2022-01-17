@@ -26,7 +26,7 @@ class Sidebar extends Component {
     // }
 
     render() {
-        const { clickMenuOpen, toggled } = this.props;
+        const { clickMenuOpen, toggled, now } = this.props;
         return (
             <ul
                 className={
@@ -45,7 +45,7 @@ class Sidebar extends Component {
                         <i className="fas fa-laugh-wink"></i>
                     </div>
                     <div className="sidebar-brand-text mx-3">
-                        SB Admin <sup>2</sup>
+                        Karanel Website
                     </div>
                 </a>
 
@@ -54,10 +54,8 @@ class Sidebar extends Component {
 
                 {/* <!-- Nav Item - Dashboard --> */}
                 <li
-                    className="nav-item"
-                    onClick={() => {
-                        nowNavPage(config.routes_frontend.panel.dashboard)
-                    }}>
+                    className={"nav-item " + (now === config.routes_frontend.panel.dashboard ? "active" : "")}
+                >
                     <Link
                         className="nav-link"
                         to={config.routes_frontend.layout.panel + config.routes_frontend.panel.dashboard}
@@ -75,10 +73,7 @@ class Sidebar extends Component {
 
                 {/* <!-- Nav Item - Charts --> */}
                 <li
-                    className="nav-item"
-                    onClick={() => {
-                        nowNavPage(config.routes_frontend.panel.data_ortu)
-                    }}
+                    className={"nav-item " + (now === config.routes_frontend.panel.data_ortu ? "active" : "")}
                 >
                     <Link
                         className="nav-link"
@@ -102,13 +97,13 @@ class Sidebar extends Component {
                         id="sidebarToggle"
                     ></button>
                 </div>
-            </ul>
+            </ul >
         );
     }
 }
 
 const mapDispatchToProps = (dispatch) =>
-    bindActionCreators({ clickMenuOpen, nowNavPage }, dispatch);
+    bindActionCreators({ clickMenuOpen }, dispatch);
 
 const mapStateToProps = (store) => ({
     toggled: store.menuState.menuOpen,

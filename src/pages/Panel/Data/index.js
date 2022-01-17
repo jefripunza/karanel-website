@@ -1,20 +1,82 @@
 import React, { Component } from 'react';
 
-//Navigation
+// Navigation
 import Sidebar from '../../../components/Navigation/Sidebar';
 import Topbar from '../../../components/Navigation/Topbar';
 
-import CardInfo from '../../../components/Cards/Info';
-import ChartDonut from '../../../components/Charts/Donut';
-import ChartLine from '../../../components/Charts/Line';
+// react component for creating dynamic tables
+import BootstrapTable from "react-bootstrap-table-next";
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
+
+// reactstrap components
+import {
+    UncontrolledTooltip,
+} from "reactstrap";
+
 import PageHeading from '../../../components/PageHeading';
 
 import Footer from '../../../components/Footer';
+import { config, pagination } from '../../../config';
+
+const { SearchBar } = Search;
 
 class Data extends Component {
     componentWillMount() {
         document.getElementById('body').className = 'page-top';
         document.title = this.props.title;
+    }
+
+    listAnak(cell, row, rowIndex, formatExtraData) {
+        return (
+            <>
+                {row.anak.map((data_anak, i) => {
+                    return <>
+                        <a href="#">
+                            {data_anak.nama}
+                        </a><br />
+                    </>
+                })}
+            </>
+        )
+    }
+
+    downloadExcel(e, row) {
+        e.preventDefault()
+    }
+
+    showDetail(e, row) {
+        e.preventDefault()
+    }
+
+    ActionColumn = (cell, row, rowIndex, formatExtraData) => {
+        // console.log({row}) // debug
+        return (
+            <>
+                <a
+                    className="table-action mr-4"
+                    href="!#"
+                    id={"tooltip_download_" + row.id}
+                    onClick={(e) => this.downloadExcel(e, row)}
+                >
+                    <i className="fas fa-download" />
+                </a>
+                <UncontrolledTooltip delay={0} target={"tooltip_download_" + row.id}>
+                    Download Excel : {row.nama_ortu}
+                </UncontrolledTooltip>
+
+                <a
+                    className="table-action"
+                    href="!#"
+                    id={"tooltip_edit_" + row.id}
+                    onClick={(e) => this.showDetail(e, row)}
+                >
+                    <i className="fas fa-user-edit" />
+                </a>
+                <UncontrolledTooltip delay={0} target={"tooltip_edit_" + row.id}>
+                    Edit Data : {row.nama_ortu}
+                </UncontrolledTooltip>
+            </>
+        );
     }
 
     render() {
@@ -23,7 +85,7 @@ class Data extends Component {
                 {/* <!-- Page Wrapper --> */}
                 <div id="wrapper">
                     {/* <!-- Sidebar --> */}
-                    <Sidebar />
+                    <Sidebar now={config.routes_frontend.panel.data_ortu} />
                     {/* <!-- End of Sidebar --> */}
 
                     {/* <!-- Content Wrapper --> */}
@@ -40,44 +102,90 @@ class Data extends Component {
 
                                 <PageHeading title="Data Orang Tua & Anak" />
 
-                                {/* <!-- Content Row --> */}
-                                <div className="row">
-                                    <CardInfo
-                                        title="Earnings (Monthly)"
-                                        icon="calendar"
-                                        color="primary"
-                                        value="$40,000"
-                                    />
+                                {/* <!-- Table --> */}
+                                <ToolkitProvider
+                                    data={[{
+                                        no: "1",
+                                        id: 123,
+                                        nama_ortu: "Paijem Butuh Hiburan",
+                                        alamat: "taman ABC",
+                                        anak: [
+                                            {
+                                                id: 1,
+                                                nama: "Paijo",
+                                                tgl_lahir: 1623343248734,
+                                            },
+                                            {
+                                                id: 2,
+                                                nama: "Sukinem",
+                                                tgl_lahir: 1623343248734,
+                                            },
+                                            {
+                                                id: 3,
+                                                nama: "Marijan",
+                                                tgl_lahir: 1623343248734,
+                                            },
+                                        ],
+                                    }]}
+                                    keyField="name"
+                                    columns={[ // editable
+                                        {
+                                            dataField: "no",
+                                            text: "NO",
+                                            sort: true,
+                                        },
+                                        {
+                                            dataField: "nama_ortu",
+                                            text: "Nama Orang Tua",
+                                            sort: true,
+                                        },
+                                        {
+                                            dataField: "anak",
+                                            text: "Anak",
+                                            formatter: this.listAnak,
+                                        },
+                                        {
+                                            dataField: "alamat",
+                                            text: "Alamat",
+                                        },
+                                        {
+                                            dataField: "",
+                                            text: "Action",
+                                            formatter: this.ActionColumn,
+                                        },
+                                    ]}
+                                    search
+                                >
+                                    {(props) => (
+                                        <div className="py-4 table-responsive">
+                                            <div className="col">
+                                                <div className="col-md-4 col-xl-4">
+                                                    <div
+                                                        id="datatable-basic_filter"
+                                                        className="dataTables_filter"
+                                                    >
+                                                        <label>
+                                                            Search:
+                                                            <SearchBar
+                                                                className="form-control-sm"
+                                                                placeholder=""
+                                                                {...props.searchProps}
+                                                            />
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <BootstrapTable
+                                                {...props.baseProps}
+                                                bootstrap4={true}
+                                                pagination={pagination}
+                                                bordered={false}
+                                            />
+                                        </div>
+                                    )}
+                                </ToolkitProvider>
+                                {/* <!-- End of Table --> */}
 
-                                    <CardInfo
-                                        title="Earnings (Annual)"
-                                        icon="calendar"
-                                        color="success"
-                                        value="215,000"
-                                    />
-
-                                    <CardInfo
-                                        title="Tasks"
-                                        icon="clipboard"
-                                        color="info"
-                                        value="50%"
-                                    />
-
-                                    <CardInfo
-                                        title="Pending Requests"
-                                        icon="comments"
-                                        color="warning"
-                                        value="18"
-                                    />
-                                </div>
-                                <div className="row">
-                                    <div className="col-xl-8 col-lg-6">
-                                        <ChartLine />
-                                    </div>
-                                    <div className="col-xl-4 col-lg-6">
-                                        <ChartDonut />
-                                    </div>
-                                </div>
                             </div>
                             {/* <!-- /.container-fluid --> */}
                         </div>

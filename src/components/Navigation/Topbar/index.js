@@ -29,7 +29,7 @@ class Topbar extends Component {
                     <li className="nav-item dropdown no-arrow">
                         <a
                             className="nav-link dropdown-toggle"
-                            href="#"
+                            href="!#"
                             id="userDropdown"
                             role="button"
                             data-toggle="dropdown"
@@ -41,6 +41,7 @@ class Topbar extends Component {
                             </span>
                             <img
                                 className="img-profile rounded-circle"
+                                alt='user profile'
                                 src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
                             />
                         </a>

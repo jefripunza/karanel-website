@@ -9,25 +9,21 @@ class Charts extends Component {
         return (
             <div>
                 {/* <!-- Page Wrapper --> */}
-                <div id="wrapper" >
-
+                <div id="wrapper">
                     {/* <!-- Sidebar --> */}
-                    < Sidebar />
+                    <Sidebar />
                     {/* <!-- End of Sidebar --> */}
 
                     {/* <!-- Content Wrapper --> */}
                     <div id="content-wrapper" className="d-flex flex-column">
-
                         {/* <!-- Main Content --> */}
                         <div id="content">
-
                             {/* <!-- Topbar --> */}
                             <Topbar />
                             {/* <!-- End of Topbar --> */}
 
                             {/* <!-- Begin Page Content --> */}
                             <div className="container-fluid">
-
                                 {/* <!-- Page Heading --> */}
                                 <PageHeading title="Charts" />
                             </div>
@@ -35,8 +31,7 @@ class Charts extends Component {
                     </div>
                 </div>
             </div>
-
-        )
+        );
     }
 }
 

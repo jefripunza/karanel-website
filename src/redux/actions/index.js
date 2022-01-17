@@ -1,6 +1,13 @@
-import { CLICK_OPEN_MENU } from "./ActionTypes";
+import { CLICK_OPEN_MENU, NOW_NAV_PAGE } from './ActionTypes';
 
-export const clickMenuOpen = value => ({
+export const clickMenuOpen = (value) => ({
     type: CLICK_OPEN_MENU,
-    newValue: value
+    newValue: value,
 });
+
+export const nowNavPage = (page) => {
+    return {
+        type: NOW_NAV_PAGE,
+        page,
+    }
+};

@@ -44,9 +44,7 @@ class Sidebar extends Component {
                     <div className="sidebar-brand-icon rotate-n-15">
                         <i className="fas fa-laugh-wink"></i>
                     </div>
-                    <div className="sidebar-brand-text mx-3">
-                        Karanel Website
-                    </div>
+                    <div className="sidebar-brand-text mx-3">Karanel Website</div>
                 </a>
 
                 {/* <!-- Divider --> */}
@@ -54,11 +52,17 @@ class Sidebar extends Component {
 
                 {/* <!-- Nav Item - Dashboard --> */}
                 <li
-                    className={"nav-item " + (now === config.routes_frontend.panel.dashboard ? "active" : "")}
+                    className={
+                        'nav-item ' +
+                        (now === config.routes_frontend.panel.dashboard ? 'active' : '')
+                    }
                 >
                     <Link
                         className="nav-link"
-                        to={config.routes_frontend.layout.panel + config.routes_frontend.panel.dashboard}
+                        to={
+                            config.routes_frontend.layout.panel +
+                            config.routes_frontend.panel.dashboard
+                        }
                     >
                         <i className="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
@@ -73,11 +77,17 @@ class Sidebar extends Component {
 
                 {/* <!-- Nav Item - Charts --> */}
                 <li
-                    className={"nav-item " + (now === config.routes_frontend.panel.data_ortu ? "active" : "")}
+                    className={
+                        'nav-item ' +
+                        (now === config.routes_frontend.panel.data_ortu ? 'active' : '')
+                    }
                 >
                     <Link
                         className="nav-link"
-                        to={config.routes_frontend.layout.panel + config.routes_frontend.panel.data_ortu}
+                        to={
+                            config.routes_frontend.layout.panel +
+                            config.routes_frontend.panel.data_ortu
+                        }
                     >
                         <i className="fas fa-fw fa-chart-area"></i>
                         <span>Data Orang Tua & Anak</span>
@@ -97,13 +107,12 @@ class Sidebar extends Component {
                         id="sidebarToggle"
                     ></button>
                 </div>
-            </ul >
+            </ul>
         );
     }
 }
 
-const mapDispatchToProps = (dispatch) =>
-    bindActionCreators({ clickMenuOpen }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ clickMenuOpen }, dispatch);
 
 const mapStateToProps = (store) => ({
     toggled: store.menuState.menuOpen,

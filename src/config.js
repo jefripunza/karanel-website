@@ -1,14 +1,14 @@
-import React from "react"
+import React from 'react';
 
 //dependencies
-import paginationFactory from "react-bootstrap-table2-paginator";
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const production = String(process.env.NODE_ENV).includes('production') ? true : false;
 
 const config = {
     app_name: 'Karanel Website',
 
-    url_server_development: 'http://localhost:5000',
+    host: 'http://104.248.151.102:3000',
     routes_frontend: {
         website: {
             home: '/',
@@ -59,7 +59,7 @@ const pagination = paginationFactory({
     sizePerPageRenderer: ({ options, currSizePerPage, onSizePerPageChange }) => (
         <div className="dataTables_length" id="datatable-basic_length">
             <label>
-                Show{" "}
+                Show{' '}
                 {
                     <select
                         name="datatable-basic_length"
@@ -72,17 +72,11 @@ const pagination = paginationFactory({
                         <option value="50">50</option>
                         <option value="100">100</option>
                     </select>
-                }{" "}
+                }{' '}
                 entries.
             </label>
         </div>
     ),
 });
 
-export {
-    production,
-    config,
-    pagination,
-    separate,
-    randomDataPoint,
-};
+export { production, config, pagination, separate, randomDataPoint };

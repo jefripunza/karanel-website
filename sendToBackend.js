@@ -12,7 +12,7 @@ const axios = require("axios");
 
 const zip_name = "target.zip";
 const backend_url = "http://104.248.151.102:5000"; // http://104.248.151.102:5000/    ||      http://localhost:5000
-const password = "1fbdb2408eee681e7a52e37d7f1b6ae070f93a85";
+const password = "1c66a4576fa6401ba2401b9638e49236ce31954a";
 const build_dir = process.argv[2] ? process.argv[2] : "build";
 
 const output = fs.createWriteStream(zip_name);

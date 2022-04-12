@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { config } from "../../config"
+import { config } from '../../config';
 
 class Website extends Component {
     componentDidMount() {
@@ -14,4 +13,4 @@ class Website extends Component {
     }
 }
 
-export default withRouter(Website);
+export default Website;

@@ -38,7 +38,7 @@ const App = () => (
             })}
 
             {/* if route path "/reset-password" ? redirect to real path */}
-            {[config.routes_frontend.auth.reset_password].map((login, i) => {
+            {/* {[config.routes_frontend.auth.reset_password].map((login, i) => {
                 return (
                     <Redirect
                         key={i}
@@ -49,10 +49,10 @@ const App = () => (
                         } // real path login
                     />
                 );
-            })}
+            })} */}
 
             {/* if route path "/signup" ? redirect to real path */}
-            {[
+            {/* {[
                 config.routes_frontend.auth.signup,
                 '/daftar',
                 config.routes_frontend.layout.auth + '/daftar',
@@ -64,7 +64,7 @@ const App = () => (
                         to={config.routes_frontend.layout.auth + config.routes_frontend.auth.signup} // real path signup
                     />
                 );
-            })}
+            })} */}
 
             {/* if route path "/logout" ? redirect to real path */}
             {[

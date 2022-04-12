@@ -1,8 +1,10 @@
 {
-    "name": "sb-admin-2-react",
+    "name": "karanel-website",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@agney/react-loading": "^0.1.2",
+        "axios": "^0.24.0",
         "bootstrap": "^4.3.1",
         "chart.js": "^2.8.0",
         "jquery": "^3.4.1",
@@ -23,11 +25,13 @@
         "react-scripts": "^3.2.0",
         "reactstrap": "^9.0.1",
         "sass": "^1.48.0",
-        "set-value": "^3.0.1"
+        "set-value": "^3.0.1",
+        "sweetalert2": "^11.3.10",
+        "sweetalert2-react-content": "^4.2.0"
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "npm run prettier && react-scripts build && npm run push",
+        "build": "npm run prettier && react-scripts build && yarn push",
         "push": "node sendToBackend",
         "prettier": "npx prettier --write src/",
         "test": "react-scripts test",
@@ -49,6 +53,7 @@
         ]
     },
     "devDependencies": {
+        "archiver": "^5.3.0",
         "react-redux": "^7.0.3",
         "redux": "^4.0.1"
     }

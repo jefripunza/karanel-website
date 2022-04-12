@@ -8,7 +8,7 @@ import SignIn from './pages/Auth/SignIn'; // switch to panel if logged
 // reset password
 
 import Dashboard from './pages/Panel/Dashboard';
-import DataOrtuAnak from "./pages/Panel/Data";
+import DataOrtuAnak from './pages/Panel/Data';
 
 // import Cards from './pages/Cards';
 import Charts from './pages/Charts';

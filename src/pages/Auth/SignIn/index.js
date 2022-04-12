@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { postRequest } from '../../../utils/Fetcher';
+
 import { config } from '../../../config';
+
+import { createWarning } from '../../../utils/SweetAlert';
 
 class SignIn extends Component {
     componentDidMount() {
@@ -17,11 +21,44 @@ class SignIn extends Component {
         document.title = this.props.title;
     }
 
-    handleSignIn = () => {
-        localStorage.setItem('login', true);
-        this.props.history.push(
-            config.routes_frontend.layout.panel + config.routes_frontend.panel.dashboard,
-        );
+    handleSignIn = (e) => {
+        e.preventDefault();
+        const [email, password, remember] = [
+            e.target.elements.email.value,
+            e.target.elements.password.value,
+            e.target.elements.remember.checked,
+        ];
+        let success = true;
+        postRequest({
+            url: '/v1/api/admin/login',
+            data: {
+                email,
+                password,
+            },
+        })
+            .then((res) => {
+                const token = res.data.token;
+                // console.log({ token, email, password });
+                localStorage.setItem('login', token);
+                localStorage.setItem('email', email);
+                this.props.history.push(
+                    config.routes_frontend.layout.panel + config.routes_frontend.panel.dashboard,
+                );
+            })
+            .catch((error) => {
+                success = false;
+                console.log({ error });
+                if (error.response.data.stat_code) {
+                    createWarning('Maaf, Email / Password salah!');
+                }
+            })
+            .finally(() => {
+                // console.log({ remember });
+                if (remember && success) {
+                    localStorage.setItem('remember_email', email);
+                    localStorage.setItem('remember_password', password);
+                }
+            });
     };
 
     render() {
@@ -46,8 +83,11 @@ class SignIn extends Component {
                                                 <div className="form-group">
                                                     <input
                                                         type="email"
+                                                        name="email"
+                                                        defaultValue={localStorage.getItem(
+                                                            'remember_email',
+                                                        )}
                                                         className="form-control form-control-user"
-                                                        id="exampleInputEmail"
                                                         aria-describedby="emailHelp"
                                                         placeholder="Enter Email Address..."
                                                     />
@@ -55,8 +95,11 @@ class SignIn extends Component {
                                                 <div className="form-group">
                                                     <input
                                                         type="password"
+                                                        name="password"
+                                                        defaultValue={localStorage.getItem(
+                                                            'remember_password',
+                                                        )}
                                                         className="form-control form-control-user"
-                                                        id="exampleInputPassword"
                                                         placeholder="Password"
                                                     />
                                                 </div>
@@ -64,6 +107,8 @@ class SignIn extends Component {
                                                     <div className="custom-control custom-checkbox small">
                                                         <input
                                                             type="checkbox"
+                                                            name="remember"
+                                                            defaultChecked={true}
                                                             className="custom-control-input"
                                                             id="customCheck"
                                                         />

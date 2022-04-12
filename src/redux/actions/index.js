@@ -9,5 +9,5 @@ export const nowNavPage = (page) => {
     return {
         type: NOW_NAV_PAGE,
         page,
-    }
+    };
 };

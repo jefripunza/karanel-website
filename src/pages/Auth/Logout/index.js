@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 class Logout extends Component {
     componentDidMount() {
         localStorage.removeItem('login');
+        localStorage.removeItem('posyandu_name');
         this.props.history.push('/login');
     }
 

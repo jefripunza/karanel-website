@@ -22,6 +22,7 @@ class Auth extends Component {
         return routes.map((prop, key) => {
             const Components = prop.render;
             if (prop.for.some((substring) => config.routes_frontend.layout.auth === substring)) {
+                console.log(prop.path);
                 return (
                     <Route
                         path={config.routes_frontend.layout.auth + prop.path}
